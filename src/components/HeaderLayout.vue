@@ -1,6 +1,6 @@
 <template>
     <header class="header">
-        <h1><img alt="Vue logo" height="30" src="../assets/logo.png"> test vue</h1>
+        <h1><img alt="Vue logo" height="30" src="../assets/logo.png"> test vue (learn)</h1>
         <HeaderNavigation />
     </header>
 </template>
