@@ -2,25 +2,45 @@ import { createStore } from 'vuex'
 
 export default createStore({
 	state: {
-		count: 1
+		price: 1001,
+		count: 2,
+		status: 'buy'
 	},
 	getters: {
-		// count(state) {
-		// 	return state.count
-		// },
-		// count: state => state.count,
-		x2(state) {
-			return state.count * 2
+		total(state) {
+			return state.price * state.count 
 		}
 	},
 	mutations: {
-		increment(state) {
+		incrementCount(state) {
 			state.count++
+		},
+		decrementCount(state) {
+			if (state.count>=2) {
+				state.count--				
+			}
+		},
+		setCount(state, newCount) {
+			state.count = parseInt(newCount)
+		},
+		setStatus(state, status){
+			state.status = status;
 		}
 	},
 	actions: {
-		increment(store) {
-			store.commit('increment')
+		incrementCount(store) {
+			store.commit('incrementCount')
+		},
+		decrementCount(store) {
+			store.commit('decrementCount')
+		},
+		setCount(store, newCount) {
+			store.commit('setCount', newCount)
+		},
+		setStatus(store, status) {
+			setTimeout(() => {
+				store.commit('setStatus', 'done');
+			}, 500);
 		}
 	},
 	modules: {

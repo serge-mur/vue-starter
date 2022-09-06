@@ -1,20 +1,28 @@
 <template>
     <header class="header">
         <h1><img alt="Vue logo" height="30" src="../assets/logo.png"> test vue (learn)</h1>
-        <HeaderNavigation />
+        <div class="header-block">
+            <HeaderNavigation />
+            <Cart />            
+        </div>
     </header>
 </template>
   
 <script>
-import HeaderNavigation from "./HeaderNavigation.vue";
+import HeaderNavigation from '@/components/HeaderNavigation.vue'
+import Cart from '@/components/Cart.vue'
 export default {
 	components: {
-		HeaderNavigation
+		HeaderNavigation,
+        Cart
 	}
 }
 </script>
   
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+    .header-block {
+        display: flex;
+        justify-content: space-between;
+    }
 </style>
   
