@@ -4,7 +4,7 @@
         <div class="price">{{ price }}</div>
         <div class="counter-block">
             <button type="button" @click="decrementCount">-</button>
-            <input type="text" @change="onInput" :value="count">
+            <input type="number" @change="onInput" :value="count">
             <button type="button" @click="incrementCount">+</button>
         </div>
         <button type="button" @click="setStatus">{{ status }}</button>
