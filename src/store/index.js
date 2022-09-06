@@ -16,12 +16,15 @@ export default createStore({
 			state.count++
 		},
 		decrementCount(state) {
-			if (state.count>=2) {
+			if (state.count>1) {
 				state.count--				
 			}
 		},
 		setCount(state, newCount) {
 			state.count = parseInt(newCount)
+			if (isNaN(state.count) || state.count<1) {
+				state.count = 1				
+			}
 		},
 		setStatus(state, status){
 			state.status = status;
