@@ -1,7 +1,13 @@
 <template>
     <header class="header">
         <h1><img alt="Vue logo" height="30" src="../assets/logo.png"> test vue market</h1>
-        <HeaderNavigation />
+        <div class="header-block">
+            <HeaderNavigation />            
+            <div>
+                <div>In Cart: cartCount</div>
+                <div>Total: cartTotal</div>                
+            </div>
+        </div>
     </header>
 </template>
   
@@ -16,5 +22,9 @@ export default {
   
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+    .header-block {
+        display: flex;
+        justify-content: space-between;
+    }
 </style>
   
