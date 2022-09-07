@@ -3,7 +3,7 @@ import { createStore } from 'vuex'
 export default createStore({
 	state: {
 		price: 1001,
-		count: 2,
+		count: 1,
 		status: 'buy'
 	},
 	getters: {
@@ -12,7 +12,13 @@ export default createStore({
 		}
 	},
 	mutations: {
-		newSetCount(state, payload) {
+		setCount(state, newCount) {
+			state.count = Math.max(1, newCount)
+			// Math.min(Math.max(1, newCount), 10)
+
+		},
+
+/* 		newSetCount(state, payload) {
 			if(payload.operation === 'increment') {
 				state.count++
 			}
@@ -27,20 +33,6 @@ export default createStore({
 					state.count = 1				
 				}
 			}
-		},
-/* 		incrementCount(state) {
-			state.count++
-		},
-		decrementCount(state) {
-			if (state.count>1) {
-				state.count--				
-			}
-		},
-		setCount(state, newCount) {
-			state.count = parseInt(newCount)
-			if (isNaN(state.count) || state.count<1) {
-				state.count = 1				
-			}
 		}, */
 		setStatus(state, status){
 			state.status = status;
@@ -48,16 +40,17 @@ export default createStore({
 	},
 	actions: {
 		incrementCount(store) {
-			// store.commit('incrementCount')
-			store.commit('newSetCount', {'operation': 'increment'})
+			// store.commit('newSetCount', {'operation': 'increment'})
+			store.commit('setCount', store.state.count + 1)
 		},
-		decrementCount(store) {
-			// store.commit('decrementCount')
-			store.commit('newSetCount', {'operation': 'decrement'})
+		decrementCount({ commit, state }) {
+			// store.commit('newSetCount', {'operation': 'decrement'})
+			commit('setCount', state.count - 1)
 		},
 		setCount(store, newCount) {
-			// store.commit('setCount', newCount)
-			store.commit('newSetCount', {'operation': 'set', 'newCount': newCount})
+			// store.commit('newSetCount', {'operation': 'set', 'newCount': newCount})
+			let count = parseInt(newCount)
+			store.commit('setCount', isNaN(count) ? 1 : count)
 		},
 		setStatus(store, status) {
 			setTimeout(() => {
