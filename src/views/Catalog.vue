@@ -14,8 +14,8 @@
 				</router-link>
 				<div class="price">{{ product.price }}</div>
 				<div>
-					<button type="button" @click="">del</button>
-					<button type="button" @click="">add</button>
+					<button type="button" @click="remove(product.id)">remove</button>
+					<button type="button" @click="add(product.id)">add</button>
 				</div>
 			</div>
 
@@ -24,10 +24,14 @@
 </template>
 
 <script>
-	import { mapState } from 'vuex'; 
+	import { mapActions, mapState, mapGetters } from 'vuex'; 
 	export default {
 		computed: {
-			...mapState('products', {products: 'items'})
+			...mapState('products', { products: 'items' }),
+			...mapGetters('cart', { inCart: 'has' })
+		},
+		methods: {
+			...mapActions('cart', { add: 'add', remove: 'remove' })
 		}
 	}
 </script>

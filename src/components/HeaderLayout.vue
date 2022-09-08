@@ -4,8 +4,8 @@
         <div class="header-block">
             <HeaderNavigation />            
             <div>
-                <div>In Cart: cartCount</div>
-                <div>Total: cartTotal</div>                
+                <div>In Cart: {{ count }}</div>
+                <div>Total: {{ total }}</div>                
             </div>
         </div>
     </header>
@@ -13,14 +13,17 @@
   
 <script>
 import HeaderNavigation from "./HeaderNavigation.vue";
+import { mapGetters } from "vuex";
 export default {
 	components: {
 		HeaderNavigation
-	}
+	},
+    computed: {
+        ...mapGetters('cart', {count: 'count', total: 'total'})
+    }
 }
 </script>
   
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
     .header-block {
         display: flex;
