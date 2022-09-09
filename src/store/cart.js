@@ -8,7 +8,7 @@ export default {
             return state.products.length
         },
         total(state) {
-            return 'xz'
+            return state.products
         },
 		has: state => id => state.products.some(pr => pr.id === id)
 		/* has(state){

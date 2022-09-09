@@ -29,11 +29,16 @@ const routes = [
 		path: '/order',
     name: 'order',
 		component: () => import('../views/Order.vue')
+	},
+  {
+		path: '/:pathMatch(.*)*',
+    name: 'error404',
+		component: () => import('../views/Error404.vue')
 	}
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes
 })
 
