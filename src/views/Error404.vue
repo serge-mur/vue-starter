@@ -1,5 +1,13 @@
 <template>
-    <div class="error404">
-        <h1>This is an 404 page</h1>
-    </div>
+    <E404></E404>
 </template>
+
+<script>
+    import E404 from '@/components/E404.vue'
+
+    export default {
+        components: {
+            E404
+        }
+    }
+</script>

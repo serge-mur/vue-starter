@@ -9,7 +9,14 @@ export default {
         ]
 	},
 	getters: {
-
+		itemsMap(state) {
+			let map = {}
+			state.items.forEach((pr, i) => {
+				map[pr.id.toString()] = i
+			})
+			return map
+		},
+		item: (state, getters) => id => state.items[getters.itemsMap[id]]
 	},
 	mutations: {
 		
